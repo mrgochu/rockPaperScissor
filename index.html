@@ -3,12 +3,119 @@
 <head>
   <title>Page Title</title>
   <meta charset="UTF-8"/>
+  <link rel="stylesheet" href="rockPaperScissor.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Press+Start+2P&family=Righteous&family=Roboto&family=Zen+Kurenaido&display=swap" rel="stylesheet">
   <!-- <link rel="stylesheet" href="style.css"> -->
   <script src="script.js"></script>
 </head>
 <body>
-    <script>
-        game();
-    </script>
+  <div class="navbar">
+    Play Game
+  </div>
+  <div id="container">
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissor">Scissor</button>
+  </div>
+
+  <script>
+    let roundsPlayed = 0;
+    let playerScore = 0;
+    let computerScore = 0;
+    let temp = -1;
+    const rock = document.getElementById('rock');
+    const paper = document.getElementById('paper');
+    const scissor = document.getElementById('scissor');
+
+    const container = document.querySelector('#container');
+    const content = document.createElement('p');
+    const score = document.createElement('p');
+    const currentScore = document.createElement('p');
+    const winner = document.createElement('p');
+
+    container.appendChild(content);
+    container.appendChild(score);
+    container.appendChild(currentScore);
+    container.appendChild(winner);
+    
+    score.textContent = `Rounds Played: ${roundsPlayed}`;
+    currentScore.textContent = `Player: ${playerScore}\t Computer: ${computerScore}`;
+
+    rock.addEventListener('click', function(e){
+      if (playerScore == 5 || computerScore == 5){
+        alert("GAME OVER");
+        return;
+      }
+      temp = playRound("rock", computerPlay());
+      if (temp == 0){
+        computerScore++;
+        currentScore.textContent = `Player: ${playerScore}\t Computer: ${computerScore}`;
+      }
+      else if (temp == 1) {
+        playerScore++;
+        currentScore.textContent = `Player: ${playerScore}\t Computer: ${computerScore}`;
+      }
+      roundsPlayed++;
+      score.textContent = `Rounds Played: ${roundsPlayed}`;
+      if (playerScore == 5 || computerScore == 5){
+        if (playerScore > computerScore) winner.textContent = "You Win!";
+        else winner.textContent = "Computer Wins...";
+        alert("GAME OVER");
+        return;
+      }
+    });
+
+    paper.addEventListener('click', function(e){
+      if (playerScore == 5 || computerScore == 5){
+        alert("GAME OVER");
+        return;
+      }
+      temp = playRound("paper", computerPlay());
+      if (temp == 0){
+        computerScore++;
+        currentScore.textContent = `Player: ${playerScore}\t Computer: ${computerScore}`;
+      }
+      else if (temp == 1) {
+        playerScore++;
+        currentScore.textContent = `Player: ${playerScore}\t Computer: ${computerScore}`;
+      }
+      roundsPlayed++;
+      score.textContent = `Rounds Played: ${roundsPlayed}`;
+      if (playerScore == 5 || computerScore == 5){
+        if (playerScore > computerScore) winner.textContent = "You Win!";
+        else winner.textContent = "Computer Wins...";
+        alert("GAME OVER");
+        return;
+      }
+    });
+
+    scissor.addEventListener('click', function(e){
+      if (playerScore == 5 || computerScore == 5){
+        alert("GAME OVER");
+        return;
+      }
+      temp = playRound("scissor", computerPlay());
+      if (temp == 0){
+        computerScore++;
+        currentScore.textContent = `Player: ${playerScore}\t Computer: ${computerScore}`;
+      }
+      else if (temp == 1) {
+        playerScore++;
+        currentScore.textContent = `Player: ${playerScore}\t Computer: ${computerScore}`;
+      }
+      roundsPlayed++;
+      score.textContent = `Rounds Played: ${roundsPlayed}`;
+      if (playerScore == 5 || computerScore == 5){
+        if (playerScore > computerScore) winner.textContent = "You Win!";
+        else winner.textContent = "Computer Wins...";
+        alert("GAME OVER");
+        return;
+      }
+    });
+
+      // game();
+  </script>
 </body>
 </html>
